@@ -1,15 +1,29 @@
 import { useState, useMemo, useCallback, useContext } from 'react';
-import { create as ipfsHttpClient } from 'ipfs-http-client';
 import { useRouter } from 'next/router';
 import { useDropzone } from 'react-dropzone';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
+import { create } from 'ipfs-http-client';
 import { NFTContext } from '../context/NFTContext';
 import { Button, Input, Loader } from '../components';
 import images from '../assets';
 
-const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
+const projectId = '2DRG5RRpFRtHWyVZowIKvUT5QeI';
+const projectSecret = 'c1333debfe3d79964c534e194bc7ec6e';
+
+const projectIdAndSecret = `${projectId}:${projectSecret}`;
+
+const client = create({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+  headers: {
+    authorization: `Basic ${Buffer.from(projectIdAndSecret).toString(
+      'base64',
+    )}`,
+  },
+});
 
 const CreateItem = () => {
   const { createSale, isLoadingNFT } = useContext(NFTContext);
@@ -20,7 +34,7 @@ const CreateItem = () => {
     try {
       const added = await client.add({ content: file });
 
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = `https://crypton.infura-ipfs.io/ipfs/${added.path}`;
 
       setFileUrl(url);
     } catch (error) {
@@ -58,7 +72,7 @@ const CreateItem = () => {
     const data = JSON.stringify({ name, description, image: fileUrl });
     try {
       const added = await client.add(data);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = `https://crypton.infura-ipfs.io/ipfs/${added.path}`;
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
       await createSale(url, formInput.price);
       router.push('/');
