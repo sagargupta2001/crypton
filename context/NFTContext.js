@@ -17,7 +17,7 @@ export const NFTProvider = ({ children }) => {
   const fetchNFTs = async () => {
     setIsLoadingNFT(false);
 
-    const provider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.maticvigil.com');
+    const provider = new ethers.providers.JsonRpcProvider('https://public.stackup.sh/api/v1/node/polygon-mumbai');
     const contract = fetchContract(provider);
 
     const data = await contract.fetchMarketItems();
