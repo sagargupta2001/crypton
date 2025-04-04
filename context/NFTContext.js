@@ -17,7 +17,7 @@ export const NFTProvider = ({ children }) => {
   const fetchNFTs = async () => {
     setIsLoadingNFT(false);
 
-    const provider = new ethers.providers.JsonRpcProvider('https://public.stackup.sh/api/v1/node/polygon-mumbai/');
+    const provider = new ethers.providers.JsonRpcProvider('https://endpoints.omniatech.io/v1/matic/mumbai/public');
     const contract = fetchContract(provider);
 
     const data = await contract.fetchMarketItems();
