@@ -17,7 +17,7 @@ export const NFTProvider = ({ children }) => {
   const fetchNFTs = async () => {
     setIsLoadingNFT(false);
 
-    const provider = new ethers.providers.JsonRpcProvider('https://polygon-mumbai-bor.publicnode.com');
+    const provider = new ethers.providers.JsonRpcProvider('https://polygontestapi.terminet.io/rpc');
     const contract = fetchContract(provider);
 
     const data = await contract.fetchMarketItems();
