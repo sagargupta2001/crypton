@@ -62,16 +62,8 @@ npx hardhat run scripts/deploy.js --network polygon
 - Auction-based NFT sales
 - Advanced analytics for NFT performance tracking
 
-## 🤝 Contributing
-Contributions are welcome! Feel free to open issues and submit pull requests.
 
-## 📜 License
-MIT License © 2025 [Your Name]
-
----
-
-🔗 **Live Demo:** *(Add deployed link if available)*  
-📧 **Contact:** [Your Email or LinkedIn]
+🔗 **Live Demo:** https://crypton-eight.vercel.app/
 
 Happy Coding! 🚀
 
