@@ -10,7 +10,7 @@ module.exports = {
       chainId: 1337,
     },
     mumbai: {
-      url: 'https://polygon-bor-rpc.publicnode.com',
+      url: 'https://rpc-mumbai.polygon.technology',
       accounts: [privateKey],
     },
     // rinkeby: {
